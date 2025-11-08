@@ -1,0 +1,86 @@
+:root {
+    --accent: #FF6565;
+    --nav-text: #000000;
+    --max-width: 1000px;
+    --header-height: 72px;
+}
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px; overflow: hidden;
+    clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+/* Header base */
+.site-header {
+    position: relative;
+    width: 100%;
+    z-index: 100;
+}
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: var(--header-height);
+}
+  
+.logo {
+    display: flex;
+    align-items: center;
+    color: var(--nav-text);
+    font-weight: bold;
+    font-size: 20px;
+}
+  
+.logo-img {
+    height: 30px; /* لضبط حجم الشعار */
+    margin-right: 10px;
+}
+/* Navigation - Desktop */
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+  
+.main-nav a {
+    text-decoration: none;
+    color: var(--nav-text);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+  
+.main-nav a:hover,
+.main-nav a:focus {
+    color: var(--accent);
+}
+  
+  /* Mobile Toggle - Initially hidden on desktop */
+.nav-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    color: var(--nav-text);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.button {
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: opacity 0.3s;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+  
+.button:hover {
+    opacity: 0.8;
+}
