@@ -1,23 +1,40 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // تحديد عنصر القائمة باستخدام id
-    const nav = document.getElementById('primary-navigation');
-    // تحديد زر الإغلاق/الفتح
-    const toggle = document.querySelector('.nav-toggle');
+
+  /* ✅===== NAVIGATION TOGGLE =====✅ */
+  const nav = document.getElementById('primary-navigation');
+  const toggle = document.querySelector('.nav-toggle');
   
-    // عند الضغط على زر الإغلاق/الفتح
-    toggle.addEventListener('click', () => {
-      // يضيف أو يزيل .open ويعيد الحالة الجديدة (true/false)
-      const isOpen = nav.classList.toggle('open'); 
-      // تحديث سمة aria-expanded للـ accessibility
-      toggle.setAttribute('aria-expanded', String(isOpen)); 
-    });
-  
-    // اختياري: إغلاق القائمة عند الضغط على رابط داخلها (تجربة مستخدم أفضل للموبايل)
-    nav.addEventListener('click', (e) => {
-      // التحقق مما إذا كان العنصر المضغوط هو وسم 'A' (رابط) وأن القائمة مفتوحة
-      if (e.target.tagName === 'A' && nav.classList.contains('open')) {
-        nav.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    });
+  toggle.addEventListener('click', () => {
+    const isOpen = nav.classList.toggle('open'); 
+    toggle.setAttribute('aria-expanded', String(isOpen)); 
   });
+
+  nav.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A' && nav.classList.contains('open')) {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+
+  /* ✅===== DARK / LIGHT MODE =====✅ */
+  const themeToggle = document.getElementById("theme-toggle");
+
+  // load saved theme
+  if (localStorage.getItem("darkMode") === "enabled") {
+    document.body.classList.add("dark");
+    if (themeToggle) themeToggle.checked = true;
+  }
+
+  // toggle theme
+  themeToggle?.addEventListener("change", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("darkMode", "enabled");
+    } else {
+      localStorage.setItem("darkMode", "disabled");
+    }
+  });
+
+});
