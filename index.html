@@ -1,120 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Medical Website</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Medical Website</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+  <!-- ✅ HEADER -->
   <header class="site-header">
     <div class="container header-inner">
+
       <div class="logo">
         <img src="R.jpeg" alt="Medical logo" class="logo-img" />
         <span class="logo-text">MEDICAL</span>
       </div>
+
+      <!-- ✅ theme + auth -->
+      <div class="header-actions">
+        <label class="switch">
+          <input type="checkbox" id="theme-toggle" />
+          <span class="slider"></span>
+        </label>
+
+        <div class="auth-buttons">
+          <button class="button login-btn">Login</button>
+          <button class="button register-btn">Register</button>
+        </div>
+      </div>
+
+      <!-- ✅ Mobile menu -->
       <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
-        <span class="sr-only">Toggle menu</span>
         <svg width="24" height="24">
           <path fill="currentColor" d="M3 18h18v-2H3v2zM3 13h18v-2H3v2zM3 6v2h18V6H3z"/>
         </svg>
       </button>
+
       <nav class="main-nav" id="primary-navigation">
         <ul>
           <li><a href="#what">What We Do</a></li>
+          <li><a href="#ai-skin">AI Diagnosis</a></li>
           <li><a href="#results">Our Results</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ul>
       </nav>
+
     </div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="banner">
-      <div class="container hero-content">
-        <h1 class="hero-title">Your Health is Our Mission.</h1>
-        <p class="hero-text">
-          We provide modern dermatology services and use AI-based technology
-          to analyze and improve your skin health.
-        </p>
-        <button class="button hero-button">Learn More</button>
+
+
+  <!-- ✅ HERO -->
+  <section class="banner">
+    <div class="container hero-content">
+      <h1 class="hero-title">Your Health is Our Mission.</h1>
+      <p class="hero-text">Modern dermatology powered by AI skin diagnostics.</p>
+      <button class="button hero-button">Learn More</button>
+    </div>
+  </section>
+
+
+
+  <!-- ✅ WHAT WE DO -->
+  <section class="what-we-do" id="what">
+    <div class="container">
+      <h2>What We Do</h2>
+      <p class="section-subtitle">High-quality dermatology and skincare services.</p>
+
+      <div class="services-grid">
+        <div class="service-item"><h3>Skin Diagnosis</h3><p>AI enhanced scanning</p></div>
+        <div class="service-item"><h3>Laser Treatment</h3><p>Modern precision</p></div>
+        <div class="service-item"><h3>Cosmetics</h3><p>Anti-aging care</p></div>
+        <div class="service-item"><h3>Follow up</h3><p>Long term support</p></div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- WHAT WE DO -->
-    <section class="what-we-do" id="what">
-      <div class="container">
-        <h2>What We Do</h2>
-        <p class="section-subtitle">
-          High-quality dermatology and skincare services.
-        </p>
-        <div class="services-grid">
-          <div class="service-item">
-            <h3>Skin Diagnosis</h3>
-            <p>AI-enhanced skin scanning for accurate diagnosis.</p>
-          </div>
 
-          <div class="service-item">
-            <h3>Laser Treatment</h3>
-            <p>Advanced laser therapy for multiple skin conditions.</p>
-          </div>
 
-          <div class="service-item">
-            <h3>Cosmetic Care</h3>
-            <p>Safe beauty and anti-aging medical care.</p>
-          </div>
+  <!-- ✅✅ AI SKIN DIAGNOSTIC -->
+  <section id="ai-skin" class="ai-skin-section">
+    <div class="container">
 
-          <div class="service-item">
-            <h3>Dermatology Follow-up</h3>
-            <p>Long-term follow-up to ensure best results.</p>
-          </div>
+      <h2>AI Skin Diagnostic</h2>
+      <p class="section-subtitle">
+        Smart deep-learning analysis for 15+ skin concerns
+      </p>
+
+      <div class="ai-box">
+        
+        <!-- upload -->
+        <input type="file" id="imgInput" accept="image/*" />
+
+        <!-- OR open camera -->
+        <button class="button" id="openCameraBtn">Use Camera</button>
+
+        <video id="camera" autoplay playsinline></video>
+
+        <button class="button" id="scanBtn">Start Scan</button>
+
+        <div id="preview">
+          <img id="uploadedImg" />
         </div>
-      </div>
-    </section>
 
-    <!-- RESULTS -->
-    <section id="results" class="our-results">
-      <div class="container">
-        <h2>Our Results</h2>
-        <p class="section-subtitle">
-          Trusted by thousands of patients around the world.
-        </p>
-        <div class="results-row">
-          <div class="result-item">
-            <span>+2M</span>
-            <p>Patients Served</p>
-          </div>
-          <div class="result-item">
-            <span>97%</span>
-            <p>Success Rate</p>
-          </div>
-          <div class="result-item">
-            <span>250</span>
-            <p>Certified Doctors</p>
-          </div>
-          <div class="result-item">
-            <span>24/7</span>
-            <p>Support</p>
-          </div>
+        <!-- RESULTS -->
+        <div id="ai-results" class="hidden">
+          <h3>Results</h3>
+          <ul id="resultList"></ul>
+
+          <h3>Skin Type</h3>
+          <p id="skinType"></p>
+
+          <h3>Recommendations</h3>
+          <p id="recommend"></p>
         </div>
-      </div>
-    </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="contact-section">
-      <div class="container">
-        <h2>Contact Us</h2>
-        <form>
-          <input type="text" placeholder="Your Name" required />
-          <input type="email" placeholder="Your Email" required />
-          <textarea placeholder="Your Message" required></textarea>
-          <button type="submit" class="button">Send</button>
-        </form>
       </div>
-    </section>
-  </main>
 
+    </div>
+  </section>
+
+
+
+  <!-- ✅ OUR RESULTS -->
+  <section id="results" class="our-results">
+    <div class="container">
+      <h2>Our Results</h2>
+      <div class="results-row">
+        <div class="result-item"><span>+2M</span><p>Patients</p></div>
+        <div class="result-item"><span>97%</span><p>Success</p></div>
+        <div class="result-item"><span>250</span><p>Doctors</p></div>
+        <div class="result-item"><span>24/7</span><p>Support</p></div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ✅ CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+
+        <button type="submit" class="button">Send</button>
+      </form>
+    </div>
+  </section>
+
+
+
+  <!-- ✅ FOOTER -->
   <footer class="site-footer">
     <div class="container">
       <div class="footer-logo">
@@ -125,6 +165,7 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+
+<script src="main.js"></script>
 </body>
 </html>
